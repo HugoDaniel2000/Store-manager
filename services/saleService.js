@@ -8,4 +8,12 @@ const getAll = async () => {
   return { code: 200, payload: sales };
 };
 
-module.exports = { getAll };
+const getById = async (id) => {
+  const sale = await salesModel.getById(id);
+  if (!sale.length) {
+    return { code: 404, payload: { message: 'Sale not found' } };
+  }
+  return { code: 200, payload: sale };
+};
+
+module.exports = { getAll, getById };
