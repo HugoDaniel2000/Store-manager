@@ -5,6 +5,10 @@ const products = require('../controllers/product/index');
 const middleware = require('../middlewares/productMiddleware');
 
 router.get('/:id', products.getByIdProduct);
+router.put('/:id',
+  middleware.validateName,
+  middleware.validateQuantity,
+  products.updateProduct);
 
 router.get('/', products.getAllProduct);
 router.post('/',
