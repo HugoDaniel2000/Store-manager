@@ -18,12 +18,21 @@ const getById = async (id) => {
 
 const register = async (name, quantity) => {
   const products = await productsModel.getAll();
-  const verify = products.some((elem) => elem.name === name);
-  if (verify) {
+  const productExist = products.some((elem) => elem.name === name);
+  if (productExist) {
     return { code: 409, payload: { message: 'Product already exists' } };
   }
   const product = await productsModel.register(name, quantity);
   return { code: 201, payload: product };
 };
 
-module.exports = { getAll, getById, register };
+const update = async (name, quantity, id) => {
+  const productExist = await productsModel.getById(id);
+  if (!productExist) {
+    return { code: 404, payload: { message: 'Product not found' } };
+  }
+  const updatePerformed = await productsModel.update(name, quantity, id);
+  return { code: 200, payload: updatePerformed };
+};
+
+module.exports = { getAll, getById, register, update };
