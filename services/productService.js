@@ -28,7 +28,7 @@ const register = async (name, quantity) => {
 
 const update = async (name, quantity, id) => {
   const productExist = await productsModel.getById(id);
-  if (!productExist) {
+  if (!productExist[0]) {
     return { code: 404, payload: { message: 'Product not found' } };
   }
   const updatePerformed = await productsModel.update(name, quantity, id);
