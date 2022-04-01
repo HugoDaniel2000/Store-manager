@@ -21,4 +21,13 @@ const create = async (sales) => {
   return { code: 201, payload: { id: salesId, itemsSold: [...sales] } };
 };
 
-module.exports = { getAll, getById, create };
+const update = async (id, sales) => {
+  const salesId = Number(id);
+  await salesModel.update(id, sales);
+  const sale = await salesModel.getById(id);
+  console.log(sale);
+
+  return { code: 200, payload: { saleId: salesId, itemUpdated: sale } };
+};
+
+module.exports = { getAll, getById, create, update };
