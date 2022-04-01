@@ -16,4 +16,9 @@ const getById = async (id) => {
   return { code: 200, payload: sale };
 };
 
-module.exports = { getAll, getById };
+const create = async (sales) => {
+  const salesId = await salesModel.create(sales);
+  return { code: 201, payload: { id: salesId, itemsSold: [...sales] } };
+};
+
+module.exports = { getAll, getById, create };
