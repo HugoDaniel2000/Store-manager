@@ -32,4 +32,13 @@ const getById = async (id) => {
   return result;
  };
 
- module.exports = { getAll, getById };
+ const create = async (sales) => {
+  const [result] = await connection.query('INSERT INTO sales VALUES()');
+  const values = sales.map((e) => [result.insertId, e.productId, e.quantity]);
+  const query = (
+    'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES ?');
+      await connection.query(query, [values]);
+  return result.insertId;
+ };
+
+ module.exports = { getAll, getById, create };
