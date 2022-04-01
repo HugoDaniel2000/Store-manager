@@ -35,4 +35,12 @@ const update = async (name, quantity, id) => {
   return { code: 200, payload: updatePerformed };
 };
 
-module.exports = { getAll, getById, register, update };
+const remove = async (id) => {
+  const productExist = await productsModel.getById(id);
+  if (!productExist[0]) {
+    return { code: 404, payload: { message: 'Product not found' } };
+  }
+  await productsModel.remove(id);
+  return { code: 204 };
+};
+module.exports = { getAll, getById, register, update, remove };
