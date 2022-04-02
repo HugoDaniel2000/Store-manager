@@ -49,5 +49,5 @@ module.exports = {
   allSalesProducts,
   salesById,
   createSale,
-  dataEmpt
+  dataEmpty
 };
