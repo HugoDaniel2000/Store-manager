@@ -18,9 +18,7 @@ const allProducts = [
 
 const dataEmpty= [];
 
-const productById = [
-  { "id": 1, "name": "Martelo de Thor", "quantity": 10 }
-];
+const productById = { "id": 1, "name": "Martelo de Thor", "quantity": 10 };
 
 const createProduct = {
   id: 100,
@@ -28,11 +26,6 @@ const createProduct = {
   quantity: 100
 };
 
-const createProduct = {
-  id: 100,
-  name: "product",
-  quantity: 100
-};
 
 module.exports = {
   allProducts,

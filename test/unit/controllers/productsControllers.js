@@ -13,7 +13,7 @@ describe('Controllers products tests', () => {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns()
     })
-  describe('Controller that list all products', () => {
+  describe('Test controller that list all products', () => {
 
     describe('When there are no products registered in the database', async() => {
 
@@ -35,7 +35,7 @@ describe('Controllers products tests', () => {
       it('res.json() is called by passing an empty array', async () => {
     let req = {};
         await productController.getAllProduct(req, res);
-
+        expect(res.json.calledWith(sinon.match.array)).to.be.equal(true)
         expect(res.json.calledWith(productsMocks.dataEmpty)).to.be.equal(true);
       })
     })
@@ -55,6 +55,7 @@ describe('Controllers products tests', () => {
         await productController.getAllProduct(req, res);
 
         expect(res.status.calledWith(200)).to.be.equal(true);
+        expect(res.json.calledWith(sinon.match.array)).to.be.equal(true)
         expect(res.json.calledWith(productsMocks.allProducts)).to.be.equal(true);
       })
     })
@@ -75,6 +76,7 @@ describe('Controllers products tests', () => {
         it('status code 200', async () => {
           await productController.getByIdProduct(req, res);
           expect(res.status.calledWith(200)).to.be.equal(true);
+          expect(res.json.calledWith(sinon.match.object)).to.be.equal(true)
           expect(res.json.calledWith(productsMocks.productById)).to.be.equal(true);
       })
   })
@@ -116,6 +118,7 @@ describe('Controllers products tests', () => {
         it('status code 201', async () => {
           await productController.registerPoduct(req, res);
           expect(res.status.calledWith(201)).to.be.equal(true);
+          expect(res.json.calledWith(sinon.match.object)).to.be.equal(true)
           expect(res.json.calledWith(productsMocks.createProduct)).to.be.equal(true);
       })
     },300000)
@@ -168,6 +171,7 @@ describe('Controllers products tests', () => {
 
         it('status code 200', async () => {
           await productController.updateProduct(req, res);
+          expect(res.json.calledWith(sinon.match.object)).to.be.equal(true)
           expect(res.status.calledWith(200)).to.be.equal(true);
         })
       })
