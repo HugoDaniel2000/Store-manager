@@ -27,4 +27,13 @@ const update = async (id, sales) => {
   return { code: 200, payload: result };
 };
 
-module.exports = { getAll, getById, create, update };
+const remove = async (id) => {
+  const sale = await salesModel.getById(id);
+  if (!sale.length) {
+    return { code: 404, payload: { message: 'Sale not found' } };
+  }
+  await salesModel.remove(id);
+  return { code: 204 };
+};
+
+module.exports = { getAll, getById, create, update, remove };

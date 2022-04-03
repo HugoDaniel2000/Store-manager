@@ -9,6 +9,7 @@ router.put('/:id',
   middleware.validateProductId,
   middleware.validateQuantity,
   sales.updateSales);
+router.delete('/:id', sales.removeSale);
 
 router.get('/', sales.getAllSales);
 router.post('/',

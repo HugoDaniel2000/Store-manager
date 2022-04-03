@@ -52,4 +52,11 @@ const getById = async (id) => {
    return { saleId: id, itemUpdated: result };
  };
 
- module.exports = { getAll, getById, create, update };
+ const remove = async (id) => {
+  const query = ('DELETE FROM  StoreManager.sales WHERE id = ?');
+  await connection.execute(query, [id]);
+  console.log(id, 'remove success');
+  return id;
+};
+
+ module.exports = { getAll, getById, create, update, remove };
