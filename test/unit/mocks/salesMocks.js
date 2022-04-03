@@ -45,6 +45,16 @@ const createSale = [{
   ]
 }];
 
+const createSale2 = {
+  id: 1,
+  itemsSold: [
+    {
+      productId: 2,
+      quantity: 10
+    }
+  ]
+};
+
 const updateSale = {
   saleId: 1,
   itemUpdated: [
@@ -70,5 +80,6 @@ module.exports = {
   createSale,
   dataEmpty,
   salesInsert,
-  updateSale
+  updateSale,
+  createSale2
 };

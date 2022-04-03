@@ -47,24 +47,24 @@ describe('2 - Model sales tests', () => {
   })
 
 
-  // describe('Test model that create sales', () =>{
-  //   describe('Create sales', () => {
-  //     before(() => {
-  //       const product =  [{ insertId: 1 }]
-  //       sinon.stub(connection, 'execute').resolves( product ,[salesMocks.createSale] );
-  //     });
+  describe('Test model that create sales', () =>{
+    describe('Create sales', () => {
+      before(() => {
+        const product =  [{ insertId: 1 }]
+        sinon.stub(connection, 'query').resolves( product ,salesMocks.createSale2 );
+      });
 
-  //     after(() => {
-  //       connection.execute.restore();
-  //     });
-  //       it('return sale created', async () => {
-  //         const sale = salesMocks.salesInsert
-  //         const result = await salesModels.create(sale);
-  //         expect(result).to.be.eql(salesMocks.createSale);
-  //       })
+      after(() => {
+        connection.query.restore();
+      });
+        it('return sale created', async () => {
+          const sale = salesMocks.salesInsert
+          const result = await salesModels.create(sale);
+          expect(result).to.be.eql(salesMocks.createSale2);
+        })
 
-  //     })
-  //   })
+      })
+    })
 
   // describe('Test service that removes product', () =>{
   //   describe('Remove Product', () => {
