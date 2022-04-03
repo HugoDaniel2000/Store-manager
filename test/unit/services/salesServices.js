@@ -5,7 +5,7 @@ const saleModel = require('../../../models/saleModel');
 const salesService =  require('../../../services/saleService');
 const salesMocks = require('../mocks/salesMocks');
 
-describe('Service sales tests', () => {
+describe('3 - Service sales tests', () => {
 
     describe('Test service that list all sales', () => {
 
@@ -115,6 +115,25 @@ describe('Service sales tests', () => {
         })
       })
 
+      describe('Test service that update sales', () =>{
+        describe('update success', () => {
+
+          before(() => {
+            sinon.stub(saleModel, 'update').callsFake(() => salesMocks.updateSale )
+            });
+
+            after(() => {
+              saleModel.update.restore();
+            });
+
+            it('return sale update', async () => {
+              const sales = salesMocks.salesInsert
+              const result = await salesService.update(1, sales);
+              const obj = {code: 200, payload: salesMocks.updateSale}
+              expect(result).to.be.eql(obj)
+            })
+        })
+      });
     // describe('Test service that removes product', () =>{
     //   describe('successfully remove and remove falid', () => {
     //     before(() => {
@@ -142,23 +161,4 @@ describe('Service sales tests', () => {
 
     // });
 
-    describe('Test service that update sales', () =>{
-      describe('update success', () => {
-
-        before(() => {
-          sinon.stub(saleModel, 'update').resolves( salesMocks.updateSale )
-          });
-
-          after(() => {
-            saleModel.update.restore();
-          });
-
-          it('return sale update', async () => {
-            const sales = salesMocks.salesInsert
-            const result = await salesService.update(sales);
-            const obj = {code: 200, payload: salesMocks.updateSale}
-            expect(result).to.be.eql(obj)
-          })
-      })
-    });
 });

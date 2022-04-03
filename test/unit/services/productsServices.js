@@ -5,7 +5,7 @@ const productsModels = require('../../../models/productModel');
 const productService =  require('../../../services/productService');
 const productsMocks = require('../mocks/productsMocks');
 
-describe('Service products tests', () => {
+describe('3 - Service products tests', () => {
 
     describe('Test service that list all products', () => {
 

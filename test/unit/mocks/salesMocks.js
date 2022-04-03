@@ -45,7 +45,7 @@ const createSale = [{
   ]
 }];
 
-const updateSale = [{
+const updateSale = {
   saleId: 1,
   itemUpdated: [
     {
@@ -53,7 +53,7 @@ const updateSale = [{
       quantity: 10
     }
   ]
-}];
+};
 
 const salesInsert = [
   {

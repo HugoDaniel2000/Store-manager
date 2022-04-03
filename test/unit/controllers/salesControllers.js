@@ -5,7 +5,7 @@ const salesService =  require('../../../services/saleService');
 const salesController =  require('../../../controllers/sales/index');
 const salesMocks = require('../mocks/salesMocks');
 
-describe('Controllers products tests', () => {
+describe('1 - Controllers sales tests', () => {
 
   let req = {};
   let res = {};
