@@ -65,7 +65,7 @@ describe('2 - Model products tests', () => {
       })
     })
 
-  describe('Test service that removes product', () =>{
+  describe('Test model that removes product', () =>{
     describe('Remove Product', () => {
       before(() => {
         sinon.stub(connection, 'execute').resolves( "2" );
@@ -83,7 +83,7 @@ describe('2 - Model products tests', () => {
 
   });
 
-  describe('Test service that updates a product', () =>{
+  describe('Test model that updates a product', () =>{
     describe('Update product', () => {
       before(() => {
         sinon.stub(connection, 'execute').resolves(productsMocks.productById);

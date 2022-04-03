@@ -156,5 +156,21 @@ describe('Test controller that updates a sale', () =>{
           expect(res.json.calledWith({message: 'Sale not found'})).to.be.equal(true);
         })
       })
+
+      describe('Test conrtroller that removes sales', () =>{
+        describe('successfully slaes', () => {
+          before(() => {
+            sinon.stub(salesService, 'remove').resolves({code: 204}, req.params = {id: 1});
+            });
+            after(() => {
+              salesService.remove.restore();
+            });
+
+            it('status code 204', async () => {
+              await salesController.removeSale(req, res);
+              expect(res.status.calledWith(204)).to.be.equal(true);
+            })
+          })
+        })
   });
 });

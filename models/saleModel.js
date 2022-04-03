@@ -55,7 +55,6 @@ const getById = async (id) => {
  const remove = async (id) => {
   const query = ('DELETE FROM  StoreManager.sales WHERE id = ?');
   await connection.execute(query, [id]);
-  console.log(id, 'remove success');
   return id;
 };
 

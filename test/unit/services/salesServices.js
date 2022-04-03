@@ -134,31 +134,32 @@ describe('3 - Service sales tests', () => {
             })
         })
       });
-    // describe('Test service that removes product', () =>{
-    //   describe('successfully remove and remove falid', () => {
-    //     before(() => {
-    //       sinon.stub(productsModels, 'remove').callsFake((id) => null)
-    //       sinon.stub(productsModels, 'getById').callsFake((id) => {
-    //         const product = productsMocks.allProducts.find((e) => e.id === id )
-    //         return product ? [product] : {} })
-    //       });
 
-    //       after(() => {
-    //         productsModels.remove.restore();
-    //         productsModels.getById.restore();
-    //       });
+    describe('Test service that removes product', () =>{
+      describe('successfully remove and remove falid', () => {
+        before(() => {
+          sinon.stub(saleModel, 'remove').callsFake((id) => null)
+          sinon.stub(saleModel, 'getById').callsFake((id) => {
+            const product = salesMocks.allSalesProducts.find((e) => e.sale_id === id )
+            return product ? [product] : {} })
+          });
 
-    //       it('existing product', async () => {
-    //         const result = await productService.remove(2);
-    //         expect(result.code).to.be.equal(204)
-    //       })
+          after(() => {
+            saleModel.remove.restore();
+            saleModel.getById.restore();
+          });
 
-    //       it('not existing product', async () => {
-    //         const result = await productService.remove(99999);
-    //         expect(result).to.be.eql({ code: 404, payload: { message: 'Product not found' }} )
-    //       })
-    //     })
+          it('existing product', async () => {
+            const result = await salesService.remove(2);
+            expect(result.code).to.be.equal(204)
+          })
 
-    // });
+          it('not existing product', async () => {
+            const result = await salesService.remove(99999);
+            expect(result).to.be.eql({ code: 404, payload: { message: 'Sale not found' } } )
+          })
+        })
+
+    });
 
 });
