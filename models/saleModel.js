@@ -38,7 +38,8 @@ const getById = async (id) => {
   const query = (
     'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES ?');
       await connection.query(query, [values]);
-  return result.insertId;
+      console.log(result);
+  return { id: result.insertId, itemsSold: [...sales] };
  };
 
  const update = async (id, sales) => {
