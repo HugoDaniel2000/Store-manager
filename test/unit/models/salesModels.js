@@ -66,22 +66,25 @@ describe('2 - Model sales tests', () => {
       })
     })
 
-    describe('Test model that removes sales', () =>{
-      describe('Remove Product', () => {
-        before(() => {
-          sinon.stub(connection, 'execute').resolves( "2" );
-        });
+    // describe('Test model that removes sales', () =>{
+    //   describe('Remove sales', () => {
+    //     before(() => {
+    //       sinon.stub(connection, 'execute').resolves( "2" );
+    //       sinon.stub(salesModels, 'increasedQuantityProduct').resolves(salesMocks.salesById)
+    //     });
 
-        after(() => {
-          connection.execute.restore();
-        });
+    //     after(() => {
+    //       connection.execute.restore();
+    //       salesModels.increasedQuantityProduct.restore();
+    //     });
 
-          it('existing product', async () => {
-            const result = await salesModels.remove(2);
-            expect(result).to.be.equal(2)
-          })
-        })
-    });
+    //       it('existing product', async () => {
+    //         await salesModels.increasedQuantityProduct(2)
+    //         const result = await salesModels.remove(2);
+    //         expect(result).to.be.equal(2)
+    //       })
+    //     })
+    // });
 
   describe('Test model that updates a sale', () =>{
     describe('Update sale', () => {

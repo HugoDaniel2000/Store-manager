@@ -32,7 +32,15 @@ const getById = async (id) => {
   return result;
  };
 
+ const decreaseQuantityProduct = async (sales) => {
+  const query = 'UPDATE StoreManager.products SET quantity = quantity - ? WHERE id = ?';
+  sales.forEach(async (e) => {
+    await connection.execute(query, [e.quantity, e.productId]);
+  });
+ };
+
  const create = async (sales) => {
+   await decreaseQuantityProduct(sales);
   const [result] = await connection.query('INSERT INTO sales VALUES()');
   const values = sales.map((e) => [result.insertId, e.productId, e.quantity]);
   const query = (
@@ -52,10 +60,22 @@ const getById = async (id) => {
    return { saleId: id, itemUpdated: result };
  };
 
+ const increasedQuantityProduct = async (id) => {
+   const products = await getById(id);
+   console.log(products);
+   const query = 'UPDATE StoreManager.products SET quantity = quantity + ? WHERE id = ?';
+   products.forEach(async (e) => {
+     await connection.query(query, [e.quantity, e.productId]);
+   });
+ };
+
  const remove = async (id) => {
+   await increasedQuantityProduct(id);
   const query = ('DELETE FROM  StoreManager.sales WHERE id = ?');
+  const queryProducts = 'DELETE FROM StoreManager.sales_products WHERE sale_id = ?';
+  await connection.execute(queryProducts, [id]);
   await connection.execute(query, [id]);
   return id;
 };
 
- module.exports = { getAll, getById, create, update, remove };
+ module.exports = { getAll, getById, create, update, remove, increasedQuantityProduct };
