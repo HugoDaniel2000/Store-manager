@@ -17,6 +17,10 @@ const getById = async (id) => {
 };
 
 const create = async (sales) => {
+  const notHasStock = await salesModel.quantityAllowed(sales);
+  if (notHasStock) {
+    return { code: 422, payload: { message: 'Such amount is not permitted to sell' } };
+  }
   const sale = await salesModel.create(sales);
   return { code: 201, payload: sale };
 };

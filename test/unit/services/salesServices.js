@@ -100,10 +100,12 @@ describe('3 - Service sales tests', () => {
       describe('create success and create falid', () => {
         before(() => {
           sinon.stub(saleModel, 'create').callsFake(() => salesMocks.createSale )
+          sinon.stub(saleModel, 'quantityAllowed').callsFake(() => false )
           });
 
           after(() => {
             saleModel.create.restore();
+            saleModel.quantityAllowed.restore();
           });
 
           it('return sales created', async () => {

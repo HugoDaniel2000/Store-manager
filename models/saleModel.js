@@ -16,6 +16,16 @@ const getAll = async () => {
   return result;
 };
 
+const quantityAllowed = async (sales) => {
+  const query = 'SELECT * FROM StoreManager.products WHERE id = ?';
+  const valid = await sales.map(async (e) => {
+      const [result] = await connection.execute(query, [e.productId]);
+      return result.some((elem) => (elem.quantity - e.quantity) < 0);
+    });
+    const response = await Promise.all(valid).then((data) => data);
+    return response.some((e) => e === true);
+};
+
 const getById = async (id) => {
   const query = (
     `SELECT
@@ -61,11 +71,12 @@ const getById = async (id) => {
  };
 
  const increasedQuantityProduct = async (id) => {
-   const products = await getById(id);
-   console.log(products);
+   const queryId = 'SELECT * FROM StoreManager.sales_products WHERE sale_id = ?';
+   const [salesId] = await connection.execute(queryId, [id]);
    const query = 'UPDATE StoreManager.products SET quantity = quantity + ? WHERE id = ?';
-   products.forEach(async (e) => {
-     await connection.query(query, [e.quantity, e.productId]);
+   salesId.forEach(async (e) => {
+     console.log(e.quantity, e.productId);
+     await connection.execute(query, [e.quantity, e.product_id]);
    });
  };
 
@@ -78,4 +89,11 @@ const getById = async (id) => {
   return id;
 };
 
- module.exports = { getAll, getById, create, update, remove, increasedQuantityProduct };
+ module.exports = {
+   getAll,
+   getById,
+   create,
+   update,
+   remove,
+   increasedQuantityProduct,
+   quantityAllowed };

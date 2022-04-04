@@ -7,7 +7,7 @@ const salesMocks = require('../mocks/salesMocks');
 
 describe('2 - Model sales tests', () => {
 
-  describe('Test model that list all products', () => {
+  describe('Test model that list all sales', () => {
 
     describe('returns all sales', async () => {
 
@@ -22,7 +22,6 @@ describe('2 - Model sales tests', () => {
 
       it('checks if it returns all sales', async () => {
         const result = await salesModels.getAll();
-        console.log(result);
         expect(result).to.eql(salesMocks.allProducts)
       })
     })
@@ -69,19 +68,17 @@ describe('2 - Model sales tests', () => {
     // describe('Test model that removes sales', () =>{
     //   describe('Remove sales', () => {
     //     before(() => {
-    //       sinon.stub(connection, 'execute').resolves( "2" );
-    //       sinon.stub(salesModels, 'increasedQuantityProduct').resolves(salesMocks.salesById)
+    //       sinon.stub(connection, 'execute').resolves( "1" );
     //     });
 
     //     after(() => {
     //       connection.execute.restore();
-    //       salesModels.increasedQuantityProduct.restore();
     //     });
 
     //       it('existing product', async () => {
-    //         await salesModels.increasedQuantityProduct(2)
-    //         const result = await salesModels.remove(2);
-    //         expect(result).to.be.equal(2)
+    //         const result = await salesModels.remove(1);
+    //         console.log(result);
+    //         expect(result).to.be.equal(1)
     //       })
     //     })
     // });
