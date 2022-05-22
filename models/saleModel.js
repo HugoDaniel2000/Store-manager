@@ -60,22 +60,32 @@ const getById = async (id) => {
  };
 
  const update = async (id, sales) => {
-   const queryId = (
-     'SELECT product_id AS productId, quantity FROM StoreManager.sales_products WHERE sale_id = ?');
+  const queryId = (
+    'SELECT product_id AS productId, quantity FROM StoreManager.sales_products WHERE sale_id = ?');
      const query = `UPDATE StoreManager.sales_products SET product_id = ?, quantity = ?
-     WHERE sale_id = ?;`;
-     const [values] = sales;
-     await connection.execute(query, [values.productId, values.quantity, id]);
+     WHERE sale_id = ? AND  product_id = ?`;
+     sales.forEach(async (e) => {
+       await connection.execute(query, [e.productId, e.quantity, id, e.productId]);
+     });
      const [result] = await connection.execute(queryId, [id]);
    return { saleId: id, itemUpdated: result };
  };
+
+//  const update = async (id, sales) => {
+//   const query = `UPDATE StoreManager.sales_products SET quantity = ?
+//   WHERE sale_id = ? AND product_id = ?;`;
+//    sales.forEach(async (e) => {
+//     await connection.execute(query, [e.quantity, id, e.productId]);
+//   });
+
+// return { saleId: id, itemUpdated: sales };
+// };
 
  const increasedQuantityProduct = async (id) => {
    const queryId = 'SELECT * FROM StoreManager.sales_products WHERE sale_id = ?';
    const [salesId] = await connection.execute(queryId, [id]);
    const query = 'UPDATE StoreManager.products SET quantity = quantity + ? WHERE id = ?';
    salesId.forEach(async (e) => {
-     console.log(e.quantity, e.productId);
      await connection.execute(query, [e.quantity, e.product_id]);
    });
  };

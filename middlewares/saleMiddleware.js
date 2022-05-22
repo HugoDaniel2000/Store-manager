@@ -17,7 +17,7 @@ const validateQuantity = (req, res, next) => {
   if (isUndefined) {
   return res.status(BAD_REQUEST).json({ message: '"quantity" is required' });
   }
-  const isGreaterEqualZero = array.some((e) => e.quantity <= 0 || !Number.isInteger(e.quantity));
+  const isGreaterEqualZero = array.some((e) => e.quantity <= 0);
   if (isGreaterEqualZero) {
   return res.status(UNPROCESSABLE_ENTITY)
     .json({ message: '"quantity" must be greater than or equal to 1' });
