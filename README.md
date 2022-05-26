@@ -3,7 +3,7 @@
 
 Projeto desenvolvido no módulo 23, durante o módulo de back-end no curso de desenvolvimento web da Trybe.
 
-:brain: Habilidades
+## :brain: Habilidades
 
 Construir uma API :
 
@@ -13,7 +13,7 @@ Construir uma API :
 
 ## :wrench: O que foi desenvolvido 
 
-Foi desenvolvido uma api que tem como objetivo gerenciar vendas.
+Foi desenvolvido uma API que tem como objetivo gerenciar vendas.
 Por meio dessa aplicação, é possível realizar as operações básicas que se pode fazer em um determinado banco de dados:
 Criação, Leitura, Atualização e Exclusão.
 
