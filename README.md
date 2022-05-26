@@ -1,4 +1,6 @@
-dart Projeto Store Manager
+
+## :dart: Projeto Store Manager
+
 Projeto desenvolvido no módulo 23, durante o módulo de back-end no curso de desenvolvimento web da Trybe.
 
 :brain: Habilidades
