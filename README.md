@@ -15,7 +15,7 @@ Construir uma API :
 
 Foi desenvolvido uma API que tem como objetivo gerenciar vendas.
 Por meio dessa aplicação, é possível realizar as operações básicas que se pode fazer em um determinado banco de dados:
-Criação, Leitura, Atualização e Exclusão.
+CRUD (_Create, Read, Update_ e _Delete_).
 
 **⚠️ Atenção:**
 
@@ -34,11 +34,11 @@ Setar as variavéis de ambiente no arquivo .env:
 
 Como baixar o projeto
 
-Realizar o git clone: git clone git@github.com:HugoDaniel2000/Store-manager.git;
+Realizar o git clone: `git clone git@github.com:HugoDaniel2000/Store-manager.git`;
 
-- Rodar o comando: npm install;
+- Rodar o comando: `npm install`;
 
-- Inicie o projeto com `npm start` ou `npm run debug`
+- Inicie o projeto com `npm start` ou `npm run dev`
 
 - Rode os testes com `npm test` ou `npm run test:mocha`
 
