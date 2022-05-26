@@ -11,7 +11,7 @@ Construir uma API :
 - Implementar teste unitários para aplicação 
 - Contruir uma API no padrão RESTful 
 
-brain O que foi desenvolvido ?
+## :brain: O que foi desenvolvido ?
 
 Foi desenvolvido uma api que tem como objetivo gerenciar vendas.
 Por meio dessa aplicação, é possível realizar as operações básicas que se pode fazer em um determinado banco de dados:
@@ -30,7 +30,7 @@ Setar as variavéis de ambiente no arquivo .env:
   PORT
 ```
 
-dart Instruções para visualizar o projeto:
+ ## :dart: Instruções para visualizar o projeto:
 
 Como baixar o projeto
 
