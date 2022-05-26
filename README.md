@@ -42,6 +42,11 @@ Realizar o git clone: `git clone git@github.com:HugoDaniel2000/Store-manager.git
 
 - Rode os testes com `npm test` ou `npm run test:mocha`
 
+**⚠️ Atenção:**
+
+- Documentação da API: 
+  - [Disponivel neste link](https://documenter.getpostman.com/view/20065093/Uz5ArySv)
+
 ## <strong>Tabelas</strong>
 
 **⚠️ EXECUTE ESSE SCRIPT NO WORKBENCH OU EM ALGUM PROGRAMA SIMILAR **
