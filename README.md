@@ -1,8 +1,6 @@
 
 ## :dart: Projeto Store Manager
 
-Projeto desenvolvido no módulo 23, durante o módulo de back-end no curso de desenvolvimento web da Trybe.
-
 ## :brain: Habilidades
 
 Construir uma API :
@@ -88,4 +86,4 @@ CREATE TABLE sales_products (
 SET SQL_SAFE_UPDATES = 0;
 ```
 
-
+:wrench: Projeto desenvolvido no módulo 23, durante o módulo de back-end no curso de desenvolvimento web da Trybe.
